@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="com.example.bubba.gasolinera12api23.MainActivity"
+    android:orientation="vertical"
+    android:layout_weight="1"
+    android:scrollbars="vertical"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+
+        android:layout_weight="1">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Venta Actual"
+            android:textAppearance="@android:style/TextAppearance.Material.Small" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+
+        android:layout_weight="1"
+        >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            android:layout_weight="1"
+            >
+
+            <RadioGroup
+                android:id="@+id/grupo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/rsuper"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Super" />
+
+                <RadioButton
+                    android:id="@+id/rregular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Regular" />
+
+                <RadioButton
+                    android:id="@+id/rdisel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Diesel" />
+            </RadioGroup>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/TextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Valor ($)"
+                android:gravity="center"/>
+
+            <EditText
+                android:id="@+id/monto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="$$$$"
+                android:inputType="number|numberDecimal" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            >
+
+            <Button
+                android:id="@+id/btnVender"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:onClick="vender"
+                android:text="Vender" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+
+        android:layout_weight="1">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Super    ($)"
+                android:gravity="center"
+                android:editable="false"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Regular ($)"
+                android:gravity="center"
+                android:editable="false"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Diesel    ($)"
+                android:gravity="center"
+                android:editable="false"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            android:layout_weight="1">
+
+            <EditText
+                android:id="@+id/precioGalonSuper"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:editable="true"
+                android:hint="$$$$"
+                android:inputType="number|numberDecimal" />
+
+            <EditText
+                android:id="@+id/precioGalonRegular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:editable="true"
+                android:hint="$$$$"
+                android:inputType="number|numberDecimal" />
+
+            <EditText
+                android:id="@+id/precioGalonDisel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:editable="true"
+                android:hint="$$$$"
+                android:inputType="number|numberDecimal" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            >
+
+            <Button
+                android:id="@+id/btnModificar"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:onClick="modificar"
+                android:text="MODIFICAR" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+
+        android:layout_weight="1"
+        >
+
+        <Button
+            android:id="@+id/btnDinero"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="cuantoDinero"
+            android:text="Cuanto en Dinero" />
+
+        <Button
+            android:id="@+id/btnGalon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="cuantoGalon"
+            android:text="Cuanto en Galon" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_weight="1">
+
+        <Button
+            android:id="@+id/btnSuper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Super" />
+
+        <Button
+            android:id="@+id/btnRegular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Regular" />
+
+        <Button
+            android:id="@+id/btnDisel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Diesel" />
+    </LinearLayout>
+
+
+
+
+
+
+</LinearLayout>
