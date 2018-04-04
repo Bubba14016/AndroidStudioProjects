@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.bubba.localizacion14api23.MainActivity">
+
+    <TextView
+        android:id="@+id/latitud"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:lineSpacingExtra="8sp"
+        android:text="TextView"
+        android:textStyle="italic" />
+
+    <TextView
+        android:id="@+id/longitud"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/latitud"
+        android:layout_marginTop="19dp"
+        android:lineSpacingExtra="8sp"
+        android:text="TextView"
+        android:textStyle="italic" />
+
+    <TextView
+        android:id="@+id/estado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/longitud"
+        android:layout_marginTop="20dp"
+        android:lineSpacingExtra="8sp"
+        android:text="TextView"
+        android:textStyle="italic" />
+
+    <TextView
+        android:id="@+id/proveedor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/estado"
+        android:layout_marginTop="18dp"
+        android:lineSpacingExtra="8sp"
+        android:text="TextView"
+        android:textStyle="italic" />
+
+    <TextView
+        android:id="@+id/precision"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/proveedor"
+        android:layout_marginTop="19dp"
+        android:lineSpacingExtra="8sp"
+        android:text="TextView"
+        android:textStyle="italic" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:onClick="click"
+        android:text="Cambiar Configuracion" />
+</RelativeLayout>
