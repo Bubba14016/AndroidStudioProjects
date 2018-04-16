@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_producto"
+            android:icon="@drawable/ic_shop_black_24dp"
+            android:title="Producto" />
+        <item
+            android:id="@+id/nav_lista"
+            android:icon="@drawable/ic_list_black_24dp"
+            android:title="Mi Compra" />
+        <item
+            android:id="@+id/nav_salir"
+            android:icon="@drawable/ic_exit_to_app_black_24dp"
+            android:title="Salir" />
+    </group>
+
+
+
+</menu>

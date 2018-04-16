@@ -103,6 +103,16 @@ public class ListaActivity extends AppCompatActivity {
             }
         }).show();
     }
+    public  void volver(View view){
+        Intent in=getIntent();
+        //in.putExtra("RESULTADO","EDITAR");
+
+        //Persona elegido = (Persona) adapterView.getItemAtPosition(i);
+
+
+        setResult(RESULT_CANCELED, in);
+        finish();
+    }
 
     public void msg2(String txt, final int posicion) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);

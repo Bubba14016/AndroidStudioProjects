@@ -187,8 +187,8 @@ public class MainActivity extends AppCompatActivity {
             //msg(persona.toString());
 
         }
-        if (requestCode==RESULT_CANCELED){
-            Toast.makeText(getBaseContext(),"La actividad hija se cancelo", Toast.LENGTH_SHORT).show();
+        if (resultCode==RESULT_CANCELED){
+            recuperarPreferencias();
         }
     }
 }
