@@ -17,6 +17,10 @@ public class Compras {
         this.posicionOriginal = posicionOriginal;
     }
 
+    public Compras(Productos producto) {
+        this.producto = producto;
+    }
+
     public Productos getProducto() {
         return producto;
     }

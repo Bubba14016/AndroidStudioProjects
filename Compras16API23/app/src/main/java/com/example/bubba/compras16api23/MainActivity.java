@@ -70,14 +70,22 @@ public class MainActivity extends AppCompatActivity
 
     public void marcarSeleccionados(){
 
-        for (int x=0;x<MainActivity.listaProductos.size();x++){
-            for (int y=0;y<MainActivity.listaCompras.size();y++){
-                if (MainActivity.listaProductos.get(x).getNombre().
-                        equals(MainActivity.listaCompras.get(y).getProducto().getNombre())){
-                    lista.setItemChecked(x,true);
-                }
+        for (int i=0;i<lista.getAdapter().getCount();i++){
+            String [] partes;
+            partes = lista.getAdapter().getItem(i).toString().split("\n");
+            if (buscar(partes[i])){
+                lista.setItemChecked(i,true);
             }
         }
+    }
+
+    public boolean buscar(String texto){
+        for (Compras c: MainActivity.listaCompras){
+            if (c.getProducto().getNombre().toString().equals(texto)){
+               return true;
+            }
+        }
+        return false;
     }
 
 
@@ -85,6 +93,11 @@ public class MainActivity extends AppCompatActivity
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         //super.onActivityResult(requestCode, resultCode, data);
         if ((requestCode==1)&&(resultCode==RESULT_OK)){
+            llenarLista();
+
+            marcarSeleccionados();
+        }
+        if ((requestCode==2)&&(resultCode==RESULT_OK)){
             llenarLista();
 
             marcarSeleccionados();
@@ -137,7 +150,8 @@ public class MainActivity extends AppCompatActivity
             startActivityForResult(intent,1);
 
         } else if (id == R.id.nav_lista) {
-
+            Intent intent=new Intent(this,MisProductosActivity.class);
+            startActivityForResult(intent,2);
         } else if (id == R.id.nav_salir) {
 
 
@@ -150,21 +164,19 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        if (existe(adapter.getItem(i).getNombre())){
-            MainActivity.listaCompras.remove(i);
-        }else{
-            MainActivity.listaCompras.add(new Compras(adapter.getItem(i),i));
+        if (!existe(adapter.getItem(i).getNombre())){
+            MainActivity.listaCompras.add(new Compras(adapter.getItem(i)));
         }
     }
 
     private boolean existe(String nombre){
         boolean bandera=false;
         if (MainActivity.listaCompras.size()>0){
-           // int index=0;
+            int index=-1;
             for (Compras c:MainActivity.listaCompras){
-                //index++;
+                index++;
                 if (c.getProducto().getNombre().equals(nombre)){
-                   // MainActivity.listaCompras.remove(c.getPosicionOriginal());
+                    MainActivity.listaCompras.remove(c.getPosicionOriginal());
                     bandera= true;
                 }
             }

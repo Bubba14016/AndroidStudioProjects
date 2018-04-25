@@ -22,6 +22,10 @@
         <activity
             android:name=".ProductoActivity"
             android:label="@string/title_activity_producto"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MisProductosActivity"
+            android:label="@string/title_activity_mis_productos"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
