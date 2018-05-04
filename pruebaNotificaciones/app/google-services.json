@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "848418629958",
+    "firebase_url": "https://pizzacangre.firebaseio.com",
+    "project_id": "pizzacangre",
+    "storage_bucket": "pizzacangre.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:848418629958:android:b5deff289acc5ec0",
+        "android_client_info": {
+          "package_name": "com.example.bubba.pruebanotificaciones"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "848418629958-duaderjtkiv5lvev9cglis5giohm5j7g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvJV6NlHIde0dYyLCB5AzR7gAwp3t1YDY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

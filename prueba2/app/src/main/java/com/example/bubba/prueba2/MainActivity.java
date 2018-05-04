@@ -52,11 +52,11 @@ public class MainActivity extends AppCompatActivity {
         consulta=new Thread(new Runnable() {
             @Override
             public void run() {
-
+                https://pizzadoncangrejo.000webhostapp.com/cons
                 while(true) {
 
                     try {
-                        String dato=downloadUrl("https://pizzadoncangrejo.000webhostapp.com/consultar.php");
+                        String dato=downloadUrl("ultar.php");
                         JSONArray ja=new JSONArray(dato);
                         String cantidad=ja.getString(0);
                         if(Integer.parseInt(cantidad)!=MainActivity.cantidad) {

@@ -37,12 +37,13 @@ public class MainActivity extends AppCompatActivity {
     RadioGroup grupo;
     SharedPreferences preferences, preferences2;
     Gson gson = new Gson();
+    BaseDatos bd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        precios = new Precios(3, 2, 1);
+        precios = new Precios(0, 0, 0);
         precioGalonSuper = (EditText) findViewById(R.id.precioGalonSuper);
         precioGalonRegular = (EditText) findViewById(R.id.precioGalonRegular);
         precioGalonDisel = (EditText) findViewById(R.id.precioGalonDisel);
@@ -68,12 +69,20 @@ public class MainActivity extends AppCompatActivity {
        // preferences2 = getSharedPreferences("datos2", Context.MODE_PRIVATE);
 
         ventas = new ArrayList<>();
+        recuperarPrecios();
+        bd.llenarPrecios();
         extraerPrecios();
         restaurarEstado(savedInstanceState);
-        recuperarPreferencias();
+        //recuperarPreferencias();
         recuperarPreferenciasVentas();
         obtenerVentas();
     }
+
+    public void recuperarPrecios(){
+        bd=new BaseDatos(this,"DBGasolinera",null,2);
+        //bd.llenarPrecios();
+        bd.consultarPrecios();
+        }
 
     public void modificar(View view){
         if(btnModificar.getText().equals("MODIFICAR")) {
