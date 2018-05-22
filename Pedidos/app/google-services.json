@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "848418629958",
+    "firebase_url": "https://pizzacangre.firebaseio.com",
+    "project_id": "pizzacangre",
+    "storage_bucket": "pizzacangre.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:848418629958:android:236c8b6b17979cfb",
+        "android_client_info": {
+          "package_name": "com.example.pedidos.kangrejo.pedidos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "848418629958-duaderjtkiv5lvev9cglis5giohm5j7g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJu7ub8iB02Ej4orcLXqicwBbeHH6UN6c"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

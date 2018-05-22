@@ -28,11 +28,11 @@ public class    MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+/////////Debo crear menu.xml en res\menu/////////////
         listaPalabras=new ArrayList<>();
         lista=(ListView) findViewById(R.id.lista);
         palabra=(EditText) findViewById(R.id.texto);
-        registerForContextMenu(lista);
+        registerForContextMenu(lista);// asignar menu a elementos de la lista
         llenar();
 
 
@@ -72,7 +72,7 @@ public class    MainActivity extends AppCompatActivity {
         }
     }
 
-    @Override
+    @Override // sobreescribir este metodo
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
 
@@ -83,7 +83,7 @@ public class    MainActivity extends AppCompatActivity {
         posicion=info.position;
     }
 
-    @Override
+    @Override // sobreescribir este metodo
     public boolean onContextItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.opcion1:

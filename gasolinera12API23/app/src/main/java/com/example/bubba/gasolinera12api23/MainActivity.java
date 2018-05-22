@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
         ventas = new ArrayList<>();
         recuperarPrecios();
-        bd.llenarPrecios();
+        //bd.llenarPrecios();
         extraerPrecios();
         restaurarEstado(savedInstanceState);
         //recuperarPreferencias();
@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void recuperarPrecios(){
-        bd=new BaseDatos(this,"DBGasolinera",null,2);
+        bd=new BaseDatos(this,"DBGasolinera",null,8);
         //bd.llenarPrecios();
         bd.consultarPrecios();
         }

@@ -23,7 +23,10 @@ public class BaseDatos extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(sqlCrearTablaPrecios);
-
+        /*SQLiteDatabase db=getReadableDatabase();
+        llenarPrecios("super","3",db);
+        llenarPrecios("regular","2",db);
+        llenarPrecios("diesel","1",db);*/
     }
 
     @Override
@@ -33,8 +36,9 @@ public class BaseDatos extends SQLiteOpenHelper{
     }
 
     public void consultarPrecios(){
+        SQLiteDatabase db = getReadableDatabase();
         try {
-            SQLiteDatabase db = getReadableDatabase();
+            //SQLiteDatabase db = getReadableDatabase();
             Cursor cursor = db.rawQuery("SELECT * FROM " + TABLA_PRECIO, null);
             int pos = 1;
             //MainActivity.listaPalabras.clear();
@@ -46,10 +50,12 @@ public class BaseDatos extends SQLiteOpenHelper{
                             pos++;
                             break;
                         case 2:
+                           // Log.i("Prueba","Entro en 2");
                             MainActivity.precios.setPrecioGalonRegular(cursor.getFloat(2));
                             pos++;
                             break;
                         case 3:
+                            //Log.d("Prueba","Entro");
                             MainActivity.precios.setPrecioGalonDisel(cursor.getFloat(2));
                             pos++;
                             break;
@@ -58,28 +64,31 @@ public class BaseDatos extends SQLiteOpenHelper{
 
                 } while (cursor.moveToNext());
             }
+            db.endTransaction();
             db.close();
         }catch (Exception e){
             Log.i("msg",e.getMessage());
+        }finally {
+
+            //db.close();
         }
     }
 
-    public void llenarPrecios(){
-        SQLiteDatabase db=getReadableDatabase();
-        try{
+    public void llenarPrecios(String nombre, String valor, SQLiteDatabase db){
 
-            db.execSQL("INSERT INTO " + TABLA_PRECIO + " VALUES (null,'super','3')");
+        db.beginTransaction();
+        try {
+
+            db.execSQL("INSERT INTO " + TABLA_PRECIO + " VALUES (null, '"+nombre+"' , '"+valor+"')");
             db.setTransactionSuccessful();
-            db.execSQL("INSERT INTO " + TABLA_PRECIO + " VALUES (null,'regular','2')");
-            db.setTransactionSuccessful();
-            db.execSQL("INSERT INTO " + TABLA_PRECIO + " VALUES (null,'diesel','1')");
-            db.setTransactionSuccessful();
+            //db.endTransaction();
+
         }catch (Exception e){
-            Log.d("msg",e.getMessage());
+            Log.d("ERROR BD: ", e.getMessage());
         }finally {
-
             db.endTransaction();
             db.close();
         }
+
     }
 }

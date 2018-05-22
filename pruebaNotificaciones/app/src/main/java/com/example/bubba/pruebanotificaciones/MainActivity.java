@@ -1,5 +1,6 @@
 package com.example.bubba.pruebanotificaciones;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -72,7 +73,9 @@ public class MainActivity extends AppCompatActivity {
         recuperarPreferencias();
         String nombre=this.nombre.getText().toString();
         String pass=this.pass.getText().toString();
-        new EnviarToken().execute("https://pizzadoncangrejo.000webhostapp.com/?nombre="+nombre+"&pass="+pass+"&token="+token);
+        ProgressDialog progress = new ProgressDialog(this);
+        progress.setMessage("Registrando datos, por favor espere...");
+        new EnviarToken(progress,this).execute("https://pizzadoncangrejo.000webhostapp.com?nombre="+nombre+"&pass="+pass+"&token="+token);
     }
 
     private class VerDatos extends AsyncTask<String, Void, String> {
@@ -105,7 +108,22 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public static class EnviarToken extends AsyncTask<String, Void, String> {
+    public  class EnviarToken extends AsyncTask<String, Void, String> {
+        ProgressDialog progress;
+        MainActivity act;
+
+        public EnviarToken(ProgressDialog progress, MainActivity act) {
+            this.progress = progress;
+            this.act = act;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progress.show();
+
+        }
+
         @Override
         protected String doInBackground(String... urls) {
 
@@ -113,21 +131,23 @@ public class MainActivity extends AppCompatActivity {
             try {
                 return downloadUrl(urls[0]);
             } catch (IOException e) {
-                return "Unable to retrieve web page. URL may be invalid.";
+                return e.getMessage();
             }
         }
         // onPostExecute displays the results of the AsyncTask.
         @Override
         protected void onPostExecute(String result) {
+            act.token1.setText(result);
+            Toast.makeText(act.getApplicationContext(), result, Toast.LENGTH_LONG).show();
+            progress.dismiss();
 
-            //Toast.makeText(getApplicationContext(), "Se almacenaron los datos correctamente", Toast.LENGTH_LONG).show();
 
 
 
         }
     }
 
-    private static String downloadUrl(String myurl) throws IOException {
+    private  String downloadUrl(String myurl) throws IOException {
         Log.i("URL",""+myurl);
         myurl = myurl.replace(" ","%20");
         InputStream is = null;
@@ -161,7 +181,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public static String readIt(InputStream stream, int len) throws IOException, UnsupportedEncodingException {
+    public  String readIt(InputStream stream, int len) throws IOException, UnsupportedEncodingException {
         Reader reader = null;
         reader = new InputStreamReader(stream, "UTF-8");
         char[] buffer = new char[len];

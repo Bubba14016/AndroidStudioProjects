@@ -3,9 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://C:\Users\Bubba\AndroidStudioProjects\gasolinera12API23\app\app.iml" filepath="C:\Users\Bubba\AndroidStudioProjects\gasolinera12API23\app\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/gasolinera12API23.iml" filepath="$PROJECT_DIR$/gasolinera12API23.iml" />
-      <module fileurl="file://C:\Users\Bubba\AndroidStudioProjects\gasolinera12API23\gasolinera12API23.iml" filepath="C:\Users\Bubba\AndroidStudioProjects\gasolinera12API23\gasolinera12API23.iml" />
     </modules>
   </component>
 </project>
