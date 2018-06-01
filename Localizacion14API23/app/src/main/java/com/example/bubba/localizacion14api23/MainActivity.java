@@ -1,5 +1,6 @@
 package com.example.bubba.localizacion14api23;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.location.Criteria;
 import android.location.Location;
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
         estado=(TextView) findViewById(R.id.estado);
     }
 
+    @SuppressLint("MissingPermission")
     @Override
     protected void onResume() {
         super.onResume();

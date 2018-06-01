@@ -14,6 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -53,7 +54,8 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        baseSQLite=new BaseSQLite(this,"BDExamen",null,1);
+        baseSQLite=new BaseSQLite(this,"BDExamen",null,3);
+        Toast.makeText(this, "HAsta aki", Toast.LENGTH_LONG).show();
         listaEstudiantes=new ArrayList<>();
         listaPreguntas= new ArrayList<>();
         listaRespuestas=new ArrayList<>();
@@ -67,35 +69,40 @@ public class MainActivity extends AppCompatActivity
         if (usuario.getText().toString().isEmpty()||contra.getText().toString().isEmpty()){
             Snackbar.make(view, "Digite sus credencuales",Snackbar.LENGTH_SHORT).show();
         }else{
-            Estudiante temp= MainActivity.baseSQLite.login(usuario.getText().toString(), contra.getText().toString());
-            if (temp!=null){
-                if (temp.getExamindao().equals("1")){
-                    Snackbar.make(view, "ya se examino",Snackbar.LENGTH_SHORT).show();
-                    usuario.setText("");
-                    contra.setText("");
-                    usuario.requestFocus();
-                }else{
-                    logueado=true;
-                    estudianteGlobal=temp;
-                    finish();
-                   // Intent intent=new Intent(this, Examen.class);
-                    //startActivity(intent);
-                }
-            }else{
-                if (usuario.getText().toString().equals("admin")&& contra.getText().toString().equals("admin")){
+           try {
+               Estudiante temp = MainActivity.baseSQLite.login(usuario.getText().toString(), contra.getText().toString());
 
-                    logueado=true;
-                    //estudianteGlobal=temp;
-                    finish();
-                    Intent intent=new Intent(this, EstudianteActivity.class);
-                    startActivity(intent);
-                }else{
-                    Snackbar.make(view, "Credenciales incorrectas",Snackbar.LENGTH_SHORT).show();
-                    usuario.setText("");
-                    contra.setText("");
-                    usuario.requestFocus();
-                }
-            }
+               if (temp != null) {
+                   if (temp.getExamindao().equals("1")) {
+                       Snackbar.make(view, "ya se examino", Snackbar.LENGTH_SHORT).show();
+                       usuario.setText("");
+                       contra.setText("");
+                       usuario.requestFocus();
+                   } else {
+                       logueado = true;
+                       estudianteGlobal = temp;
+                       finish();
+                       // Intent intent=new Intent(this, Examen.class);
+                       //startActivity(intent);
+                   }
+               } else {
+                   if (usuario.getText().toString().equals("admin") && contra.getText().toString().equals("admin")) {
+
+                       logueado = true;
+                       //estudianteGlobal=temp;
+                       finish();
+                       Intent intent = new Intent(this, EstudianteActivity.class);
+                       startActivity(intent);
+                   } else {
+                       Snackbar.make(view, "Credenciales incorrectas", Snackbar.LENGTH_SHORT).show();
+                       usuario.setText("");
+                       contra.setText("");
+                       usuario.requestFocus();
+                   }
+               }
+           }catch (Exception e){
+               Toast.makeText(this,e.getMessage(),Toast.LENGTH_LONG).show();
+           }
         }
     }
 

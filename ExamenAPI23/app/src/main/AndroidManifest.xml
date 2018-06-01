@@ -23,7 +23,11 @@
             android:name=".EstudianteActivity"
             android:label="@string/title_activity_estudiante"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".CustomEstudianteActivity"></activity>
+        <activity android:name=".CustomEstudianteActivity" />
+        <activity
+            android:name=".PreguntasActivity"
+            android:label="@string/title_activity_preguntas"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

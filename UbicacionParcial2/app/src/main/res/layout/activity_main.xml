@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="18dp"
+        android:text="Latitud"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/textView"
+        android:layout_marginTop="55dp"
+        android:text="Longitud"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/textView"
+        android:layout_marginTop="95dp"
+        android:background="@drawable/estiloboton"
+        android:onClick="iniciar"
+        android:text="Iniciar"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btnParar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/btnStart"
+        android:layout_marginStart="121dp"
+        android:background="@drawable/estiloboton"
+        android:onClick="parar"
+        android:text="Parar"
+        android:textAllCaps="false" />
+
+    <Switch
+        android:id="@+id/recordar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/btnStart"
+        android:layout_marginEnd="13dp"
+        android:text="Recordar" />
+
+    <TextView
+        android:id="@+id/estado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/textView" />
+
+    <TextView
+        android:id="@+id/lat"
+        android:layout_width="279dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textView"
+        android:layout_toEndOf="@+id/btnStart" />
+
+    <TextView
+        android:id="@+id/lon"
+        android:layout_width="279dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textView2"
+        android:layout_toEndOf="@+id/btnStart" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/recordar"
+        android:layout_alignParentBottom="true"
+        android:onClick="eliminar"
+        android:text="Eliminar Preferencias"
+        android:textAllCaps="false" />
+
+    <ListView
+        android:id="@+id/lista"
+        android:layout_width="match_parent"
+        android:layout_height="321dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/btnStart" />
+</RelativeLayout>

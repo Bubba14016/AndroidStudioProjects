@@ -1,10 +1,12 @@
 package com.example.examen.examenapi23;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.text.Editable;
 import android.util.Log;
 import android.view.View;
@@ -63,6 +65,8 @@ public class EstudianteActivity extends AppCompatActivity
         carnet=(EditText) findViewById(R.id.carnet1);
         nombre=(EditText) findViewById(R.id.nombre);
         lista=(ListView) findViewById(R.id.lista);
+        btnAlmacenar=(Button) findViewById(R.id.btnAlmacenar);
+        llenar();
     }
 
     public void llenar(){
@@ -72,6 +76,7 @@ public class EstudianteActivity extends AppCompatActivity
     }
 
     public void guardar(View view){
+        try {
         if (carnet.getText().toString().isEmpty()||nombre.getText().toString().isEmpty()){
             Snackbar.make(view,"Complete los campos",Snackbar.LENGTH_SHORT).show();
         }else {
@@ -80,18 +85,23 @@ public class EstudianteActivity extends AppCompatActivity
             //inputMethodManager.hideSoftInputFromWindow(nombre.getWindowToken(),0);
             if (btnAlmacenar.getText().equals("Almacenar")){
                 try {
+
                     MainActivity.baseSQLite.insertarE(new Estudiante(
                             carnet.getText().toString(), nombre.getText().toString(), "0"
                     ));
                 }catch (Exception e){
-                    Log.d("MSG",e.getMessage());
+                    Snackbar.make(view, e.getMessage(),Snackbar.LENGTH_SHORT).show();
                 }
                 Snackbar.make(view, "Datos Guardados",Snackbar.LENGTH_SHORT).show();
             }
+
             llenar();
             nombre.setText("");
             carnet.setText("");
             carnet.requestFocus();
+        }
+        }catch (Exception e){
+            Snackbar.make(view, e.getMessage()+"",Snackbar.LENGTH_LONG).show();
         }
     }
 
@@ -103,6 +113,29 @@ public class EstudianteActivity extends AppCompatActivity
         } else {
             super.onBackPressed();
         }
+    }
+
+    public void borrar(View view){
+        final int id=Integer.parseInt(String.valueOf(view.getTag()));
+        AlertDialog.Builder ad=new AlertDialog.Builder(this);
+        ad.setTitle("(Examen!!!!)");
+        ad.setIcon(android.R.drawable.star_big_off);
+        ad.setMessage("Eliminar Intento?");
+        ad.setPositiveButton("si", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                MainActivity.baseSQLite.borrarExamen(id);
+                MainActivity.baseSQLite.suprimirExaminado(id);
+                Snackbar.make(getCurrentFocus(),"Complete los campos", Snackbar.LENGTH_SHORT).show();
+                llenar();
+            }
+        });
+        ad.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        }).show();
     }
 
     @Override
@@ -133,7 +166,9 @@ public class EstudianteActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_preguntas) {
+            Intent intent=new Intent(this, PreguntasActivity.class);
+            startActivity(intent);
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
 

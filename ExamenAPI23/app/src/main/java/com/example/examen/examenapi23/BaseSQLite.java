@@ -4,6 +4,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+import android.widget.Toast;
 
 public class BaseSQLite extends SQLiteOpenHelper {
     public static final String TABLA_ESTUDIATE="TEstudiante";
@@ -40,18 +42,21 @@ public class BaseSQLite extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS "+TABLA_ESTUDIATE);
         db.execSQL("DROP TABLE IF EXISTS "+TABLA_PREGUNTAS);
         db.execSQL("DROP TABLE IF EXISTS "+TABLA_RESPUESTAS);
+        onCreate(db);
     }
 
     public void insertarE(Estudiante estudiante){
+
         SQLiteDatabase db=getReadableDatabase();
         db.beginTransaction();
         try {
+
             db.execSQL("INSERT INTO " + TABLA_ESTUDIATE + " VALUES(null,'"
                     + estudiante.getCarnet().toString().toUpperCase() + "', '" + estudiante.getNombre().toString().toUpperCase() + "', '"
                     + estudiante.getExamindao().toString() + "')");
             db.setTransactionSuccessful();
         }catch (Exception e){
-
+            Log.d("errooooooooooor: ",e.getMessage());
         }finally {
             db.endTransaction();
         }
@@ -61,7 +66,7 @@ public class BaseSQLite extends SQLiteOpenHelper {
 
     public void consultarE(){
         SQLiteDatabase db=getReadableDatabase();
-        Cursor cursor= db.rawQuery("SELECT * FROM "+TABLA_ESTUDIATE+" ORDER BY NOMBRE",null);
+        Cursor cursor= db.rawQuery("SELECT * FROM "+TABLA_ESTUDIATE+" ",null);
         MainActivity.listaEstudiantes.clear();
         if (cursor.moveToFirst()){
             do{
@@ -92,5 +97,33 @@ public class BaseSQLite extends SQLiteOpenHelper {
         }
         db.close();
         return estudiante;
+    }
+
+    public void borrarExamen(int id){
+        SQLiteDatabase db=getReadableDatabase();
+        db.beginTransaction();
+        try{
+            db.execSQL("DELETE FROM "+TABLA_RESPUESTAS+" WHERE IDESTUDIANTE='"+id+"'");
+        }catch(Exception e){
+
+        }finally {
+            db.endTransaction();
+        }
+        db.close();
+
+    }
+
+    public void suprimirExaminado(int id){
+        SQLiteDatabase db=getReadableDatabase();
+        db.beginTransaction();
+        try{
+            db.execSQL("UPDATE "+TABLA_ESTUDIATE+" SET examinado='0' WHERE IDESTUDIANTE='"+id+"'");
+        }catch(Exception e){
+
+        }finally {
+            db.endTransaction();
+        }
+        db.close();
+
     }
 }
