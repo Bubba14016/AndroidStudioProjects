@@ -1,6 +1,7 @@
 package com.example.examen.examenapi23;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -27,6 +29,7 @@ public class Adaptador extends ArrayAdapter<Estudiante> {
         if (convertView==null){
             convertView= LayoutInflater.from(getContext()).inflate(R.layout.activity_custom_estudiante,parent, false);
         }
+
         TextView carnet=(TextView) convertView.findViewById(R.id.carnet);
         TextView nombre=(TextView) convertView.findViewById(R.id.nombre);
         Button btnBorrar=(Button) convertView.findViewById(R.id.btnBorrar);

@@ -27,6 +27,24 @@
         <activity
             android:name=".PreguntasActivity"
             android:label="@string/title_activity_preguntas"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".CustomPreguntasActivity" />
+        <activity
+            android:name=".GestionPreguntaActivity"
+            android:label="@string/title_activity_gestion_pregunta"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".EditarPreguntaActivity"
+            android:label="@string/title_activity_editar_pregunta"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ExamenActivity"
+            android:label="@string/title_activity_examen"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".CustomNotasActivity" />
+        <activity
+            android:name=".NotasActivity"
+            android:label="@string/title_activity_notas"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

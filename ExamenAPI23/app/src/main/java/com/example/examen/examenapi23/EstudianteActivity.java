@@ -170,9 +170,12 @@ public class EstudianteActivity extends AppCompatActivity
             Intent intent=new Intent(this, PreguntasActivity.class);
             startActivity(intent);
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_gestion) {
+            Intent intent=new Intent(this, GestionPreguntaActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.nav_notas) {
+            Intent intent=new Intent(this,NotasActivity.class);
+            startActivity(intent);
 
         } else if (id == R.id.nav_manage) {
 

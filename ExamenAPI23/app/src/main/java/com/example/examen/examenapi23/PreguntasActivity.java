@@ -1,5 +1,7 @@
 package com.example.examen.examenapi23;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -12,9 +14,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 public class PreguntasActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    EditText opciona, opcionb, opcionc, opciond, pregunta;
+    RadioButton ra,rb,rc,rd;
+    RadioGroup grupo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +31,7 @@ public class PreguntasActivity extends AppCompatActivity
         setContentView(R.layout.activity_preguntas);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -40,6 +50,65 @@ public class PreguntasActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        opciona=(EditText) findViewById(R.id.opciona);
+        opcionb=(EditText) findViewById(R.id.opcionb);
+        opcionc=(EditText) findViewById(R.id.opcionc);
+        opciond=(EditText) findViewById(R.id.opciond);
+        pregunta=(EditText) findViewById(R.id.pregunta);
+
+        ra=(RadioButton) findViewById(R.id.ra);
+        rb=(RadioButton) findViewById(R.id.rb);
+        rc=(RadioButton) findViewById(R.id.rc);
+        rd=(RadioButton) findViewById(R.id.rd);
+
+        grupo=(RadioGroup) findViewById(R.id.gruporadio);
+    }
+
+    public void guardar(View view){
+        if (pregunta.getText().toString().equals("")||
+                opciona.getText().toString().equals("")||
+                opcionb.getText().toString().equals("")||
+                opcionc.getText().toString().equals("")||
+                opciond.getText().toString().equals("")){
+            Snackbar.make(view, "Complete los campos", Snackbar.LENGTH_SHORT).show();
+        }else {
+            InputMethodManager inputMethodManager=(InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            inputMethodManager.hideSoftInputFromWindow(pregunta.getWindowToken(),0);
+            inputMethodManager.hideSoftInputFromWindow(opciona.getWindowToken(),0);
+            inputMethodManager.hideSoftInputFromWindow(opcionb.getWindowToken(),0);
+            inputMethodManager.hideSoftInputFromWindow(opcionc.getWindowToken(),0);
+            inputMethodManager.hideSoftInputFromWindow(opciond.getWindowToken(),0);
+
+            if ((!ra.isChecked()&& !rb.isChecked()&&!rc.isChecked()&&!rd.isChecked())){
+                Snackbar.make(view, "Selecciona la respuesta correcta", Snackbar.LENGTH_SHORT).show();
+            }else {
+                String respuesta=null;
+                if (ra.isChecked())respuesta="a";
+                if (rb.isChecked())respuesta="b";
+                if (rc.isChecked())respuesta="c";
+                if (rd.isChecked())respuesta="d";
+
+                String oa,ob,oc,od,item;
+                oa=opciona.getText().toString().toUpperCase();
+                ob=opcionb.getText().toString().toUpperCase();
+                oc=opcionc.getText().toString().toUpperCase();
+                od=opciond.getText().toString().toUpperCase();
+                item=pregunta.getText().toString().toUpperCase();
+                MainActivity.baseSQLite.insertarP(new Pregunta(item,oa,ob,oc,od,respuesta));
+                Snackbar.make(view, "Datos guardados", Snackbar.LENGTH_SHORT).show();
+                limpiar();
+            }
+        }
+    }
+
+    public void limpiar(){
+        grupo.clearCheck();
+        opciona.setText("");
+        opcionb.setText("");
+        opcionc.setText("");
+        opciond.setText("");
+        pregunta.setText("");
     }
 
     @Override
@@ -80,7 +149,9 @@ public class PreguntasActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_estudiante) {
+            Intent intent=new Intent(this, EstudianteActivity.class);
+            startActivity(intent);
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
 

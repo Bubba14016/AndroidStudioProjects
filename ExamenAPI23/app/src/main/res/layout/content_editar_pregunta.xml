@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/holo_orange_dark"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".EditarPreguntaActivity"
+    tools:showIn="@layout/app_bar_editar_pregunta">
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="Editar Preguntas"
+        android:textAllCaps="false"
+        android:textColor="@android:color/background_light"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/pregunta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="44dp"
+        android:background="@drawable/estilocaja"
+        android:ems="10"
+        android:hint="Escriba la pregunta..."
+        android:inputType="textMultiLine"
+        android:maxLines="2"
+        android:minLines="2" />
+
+    <RadioGroup
+        android:id="@+id/gruporadio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="105dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
+
+        <RadioButton
+            android:id="@+id/ra"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_below="@+id/pregunta"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            />
+
+        <RadioButton
+            android:id="@+id/rb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_below="@+id/opciona"
+            android:layout_marginTop="35dp"
+            android:layout_weight="1"
+            />
+
+        <RadioButton
+            android:id="@+id/rc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_below="@+id/opcionb"
+            android:layout_marginTop="35dp"
+            android:layout_weight="1"
+            />
+
+        <RadioButton
+            android:id="@+id/rd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_below="@+id/opcionc"
+            android:layout_marginTop="35dp"
+            android:layout_weight="1"
+            />
+    </RadioGroup>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:id="@+id/opciona"
+        android:background="@drawable/estilocaja"
+        android:minLines="2"
+        android:layout_below="@+id/pregunta"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/gruporadio"
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="5dp"
+        android:maxLines="2"
+        android:hint="Opcion A...."/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:id="@+id/opcionb"
+        android:background="@drawable/estilocaja"
+        android:minLines="2"
+        android:layout_below="@+id/opciona"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/gruporadio"
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="5dp"
+        android:maxLines="2"
+        android:hint="Opcion B...."/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:id="@+id/opcionc"
+        android:background="@drawable/estilocaja"
+        android:minLines="2"
+        android:layout_below="@+id/opcionb"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/gruporadio"
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="5dp"
+        android:maxLines="2"
+        android:hint="Opcion C...."/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:id="@+id/opciond"
+        android:background="@drawable/estilocaja"
+        android:minLines="2"
+        android:layout_below="@+id/opcionc"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/gruporadio"
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="5dp"
+        android:maxLines="2"
+        android:hint="Opcion D...."/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnAlmacenar"
+
+        android:onClick="editar"
+        android:text="Editar"
+        android:textColor="@android:color/background_light"
+        android:textSize="20sp"
+        android:layout_below="@+id/opciond"
+        android:layout_alignParentEnd="true"
+        android:layout_alignStart="@id/gruporadio"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        />
+
+</RelativeLayout>

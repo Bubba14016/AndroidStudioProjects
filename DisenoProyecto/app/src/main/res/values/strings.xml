@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">DisenoProyecto</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_inicio_empresas">InicioEmpresasActivity</string>
+    <string name="title_activity_inicio_empresa">InicioEmpresaActivity</string>
+    <string name="title_activity_registrar">RegistrarActivity</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_mis_productos">MisProductosActivity</string>
+    <string name="title_activity_sucursales">SucursalesActivity</string>
+    <string name="title_activity_nueva_sucursal">NuevaSucursalActivity</string>
+    <string name="title_activity_nuevo_prod">NuevoProdActivity</string>
+    <string name="title_activity_info">InfoActivity</string>
+    <string name="title_activity_categorias">CategoriasActivity</string>
+    <string name="title_activity_producto">ProductoActivity</string>
+    <string name="title_activity_maps">Map</string>
+</resources>

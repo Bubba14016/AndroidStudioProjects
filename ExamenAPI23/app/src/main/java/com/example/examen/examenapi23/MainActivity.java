@@ -22,12 +22,13 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     public static ArrayList<Estudiante> listaEstudiantes;
-    public static ArrayList<Preguntas> listaPreguntas;
-    public static ArrayList<Respuestas> listaRespuestas;
+    public static ArrayList<Pregunta> listaPreguntas;
+    public static ArrayList<Respuesta> listaRespuestas;
     public static BaseSQLite baseSQLite;
     public static boolean logueado;
     public static Estudiante estudianteGlobal;
     EditText usuario, contra;
+    public static int idpregunta;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,8 +83,8 @@ public class MainActivity extends AppCompatActivity
                        logueado = true;
                        estudianteGlobal = temp;
                        finish();
-                       // Intent intent=new Intent(this, Examen.class);
-                       //startActivity(intent);
+                       Intent intent=new Intent(this, ExamenActivity.class);
+                       startActivity(intent);
                    }
                } else {
                    if (usuario.getText().toString().equals("admin") && contra.getText().toString().equals("admin")) {

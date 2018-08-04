@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".InicioEmpresaActivity"
+    tools:showIn="@layout/app_bar_inicio_empresa">
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        style="@style/Widget.AppCompat.ImageButton"
+        android:layout_width="129dp"
+        android:layout_height="103dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="26dp"
+        android:background="@android:color/transparent"
+        android:onClick="sucursal"
+        android:scaleType="fitCenter"
+        app:srcCompat="@mipmap/nueva" />
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="129dp"
+        android:layout_height="103dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/imageButton"
+        android:layout_marginEnd="18dp"
+        android:background="@android:color/transparent"
+        android:onClick="producto"
+        android:scaleType="fitStart"
+        app:srcCompat="@mipmap/prod" />
+
+    <ImageButton
+        android:id="@+id/imageButton3"
+        android:layout_width="128dp"
+        android:layout_height="103dp"
+        android:layout_alignStart="@+id/imageButton"
+        android:layout_centerVertical="true"
+        android:background="@android:color/transparent"
+        android:onClick="listar"
+        android:scaleType="fitCenter"
+        app:srcCompat="@mipmap/listprod" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="127dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/imageButton"
+        android:layout_marginTop="136dp"
+        android:text="Nueva Sucursal"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="127dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/imageButton4"
+        android:layout_alignTop="@+id/textView2"
+        android:text="Nuevo Producto"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="127dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/imageButton"
+        android:layout_below="@+id/imageButton3"
+        android:text="Mis Productos"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat" />
+
+    <ImageButton
+        android:id="@+id/imageButton4"
+        android:layout_width="129dp"
+        android:layout_height="102dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="28dp"
+        android:background="@android:color/transparent"
+        android:onClick="informacion"
+        android:scaleType="fitCenter"
+        app:srcCompat="@mipmap/info" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="127dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textView3"
+        android:layout_alignTop="@+id/textView4"
+        android:text="Mi informacion"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat" />
+
+</RelativeLayout>
